@@ -1,0 +1,32 @@
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>demo</title>
+</head>
+<body>
+<h1> Bonjour</h1>
+<p th:text="'Hello, ' + ${name} + '!'"></p>
+<form method='post'>
+    <label>
+        <input name="nom">
+    </label>
+    <button type="submit">Valider</button>
+</form>
+
+<ul>
+    <li th:each="p : ${personnages}"><p th:text="${p.name}"></p></li>
+</ul>
+
+<div th:if="${numbers != null}">
+    <table>
+        <tbody>
+        <tr>
+            <th:block th:each="i : ${numbers}">
+                <td th:text="${i}"></td>
+            </th:block>
+        </tr>
+        </tbody>
+    </table>
+</div>
+
+</body>
+</html>
