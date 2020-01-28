@@ -15,7 +15,7 @@ import java.util.stream.IntStream;
 /**
  * Created by grimaceplume on 18/12/2019.
  */
-@Controller
+@Controller("/")
 public class HomeController {
   private final PersonnageRepository personnageRepository;
 
@@ -23,7 +23,7 @@ public class HomeController {
     this.personnageRepository = personnageRepository;
   }
 
-  @GetMapping("/")
+  @GetMapping
   public String index(Model model) {
     model.addAttribute("name", "test");
     model.addAttribute("personnages", personnageRepository.findAll());
@@ -38,5 +38,11 @@ public class HomeController {
     model.addAttribute("numbers", integer);
     model.addAttribute("personnages", personnageRepository.findAll());
     return "index";
+  }
+
+  @GetMapping("/delete/:id")
+  public String delete(@RequestParam(name = "id") Integer id) {
+    personnageRepository.delete(Personnage.builder().id(id).build());
+    return "redirect:/";
   }
 }
