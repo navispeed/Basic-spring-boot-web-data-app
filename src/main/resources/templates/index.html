@@ -14,7 +14,7 @@
 
 <ul>
     <li th:each="p : ${personnages}"><p th:text="${p.name}"></p>
-        <a th:href="/delete/${p.getId()}">Supprimer</a>
+        <a th:href="@{'/delete/' + ${p.getId()}}">Supprimer</a>
     </li>
 </ul>
 
